@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Shanwar Premium Artist Website - Complex 3D Keyframes & CSS Variables
+   (Layout and typography migrated to Tailwind CSS)
+   ========================================================================== */
+
+body.loading {
+    opacity: 0;
+}
+
+/* ===================== HERO ORBIT GALLERY ===================== */
+@keyframes orbit-track {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.arch-track {
+  --radius: clamp(250px, max(45vh, 32vw), 800px);
+  animation: orbit-track 70s linear infinite;
+}
+
+.arch-item {
+  --size: var(--desktop-size);
+  width: var(--size);
+  height: var(--size);
+  margin-left: calc(var(--size) * -0.5);
+  margin-top: calc(var(--size) * -0.5);
+}
+
+@media (max-width: 639px) {
+  .arch-item {
+    --size: var(--mobile-size);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Carousel 3D Coverflow Logic
+   -------------------------------------------------------------------------- */
+.carousel-container {
+    position: relative;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, z-index 0s;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    z-index: 10;
+    transform: translateX(0) scale(1) translateZ(0);
+    pointer-events: auto;
+}
+
+.carousel-item.prev-1 {
+    opacity: 0.85;
+    z-index: 9;
+    transform: translateX(-150px) scale(0.85) translateZ(-100px) rotateY(15deg);
+    pointer-events: auto;
+}
+
+.carousel-item.next-1 {
+    opacity: 0.85;
+    z-index: 9;
+    transform: translateX(150px) scale(0.85) translateZ(-100px) rotateY(-15deg);
+    pointer-events: auto;
+}
+
+.carousel-item.prev-2 {
+    opacity: 0.5;
+    z-index: 8;
+    transform: translateX(-260px) scale(0.7) translateZ(-200px) rotateY(25deg);
+    pointer-events: auto;
+}
+
+.carousel-item.next-2 {
+    opacity: 0.5;
+    z-index: 8;
+    transform: translateX(260px) scale(0.7) translateZ(-200px) rotateY(-25deg);
+    pointer-events: auto;
+}
+
+.carousel-info-glass {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-item.active .carousel-info-glass {
+    opacity: 1;
+}
