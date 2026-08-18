@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gather — New Era, Same Energy</title>
+  <meta name="description" content="The new album is here — turn it up and feel the fire." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Mrs+Saint+Delafield&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Geist", "Arial", "sans-serif"],
+            mono: ["Geist Mono", "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="flex min-h-full flex-col bg-white font-sans text-[#171717]">
+  <main>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="navbar"
+      class="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-transparent px-6 py-5 text-[#f4ecdf] transition-colors duration-300 sm:px-10 sm:py-6 md:px-16">
+      <span class="text-sm font-medium tracking-[0.3em]">GATHER</span>
+      <ul class="hidden gap-8 text-xs font-medium tracking-[0.25em] sm:flex md:gap-12 md:text-sm">
+        <li class="cursor-pointer transition-opacity hover:opacity-70">HOME</li>
+        <li class="cursor-pointer transition-opacity hover:opacity-70">ABOUT</li>
+        <li class="cursor-pointer transition-opacity hover:opacity-70">RELEASES</li>
+        <li class="cursor-pointer transition-opacity hover:opacity-70">CONTACT</li>
+      </ul>
+      <button aria-label="Open menu" class="sm:hidden">
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </button>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="relative min-h-screen w-full overflow-hidden bg-[#08070a] text-[#f4ecdf]">
+      <div id="orbit-track" class="arch-track absolute left-1/2 top-[85%] z-0 h-0 w-0">
+        <!-- arch-items injected by script.js -->
+      </div>
+
+      <div class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center">
+        <h1 class="text-[clamp(1.25rem,4vw,2.75rem)] font-light uppercase leading-none tracking-[0.15em]">
+          New Era
+        </h1>
+        <p class="-mt-1 font-script text-[clamp(2.5rem,9vw,6.5rem)] leading-none text-[#f4ecdf] sm:-mt-2">
+          Same energy.
+        </p>
+        <button
+          class="relative z-20 mt-10 rounded-full bg-[#f4ecdf] px-6 py-2 text-xs font-medium text-black transition-transform hover:scale-105 sm:-mt-6 sm:text-sm">
+          Join Gather
+        </button>
+      </div>
+
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-1/2 bg-gradient-to-t from-[#08070a] to-transparent sm:h-1/3">
+      </div>
+
+      <div class="absolute inset-x-0 bottom-20 z-10 px-4 text-center sm:bottom-24">
+        <p class="text-[0.65rem] uppercase tracking-[0.2em] text-[#f4ecdf]/80 sm:text-sm md:text-base">
+          The new album is here — turn it up and feel the fire.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== ALBUM INTRO ===================== -->
+    <section class="bg-black px-6 py-16 text-[#f4ecdf] sm:px-10 sm:py-20 md:px-16 md:py-24">
+      <p class="max-w-2xl text-lg leading-8 sm:text-xl sm:leading-9">
+        <span class="font-bold">Crimson Thorns</span> returns with their most
+        explosive sound yet. Ashes &amp; Amplifiers is a raw mix of sweat,
+        distortion, and emotion — born from late nights, loud rooms, and
+        everything left unsaid. It&apos;s not just an album; it&apos;s a
+        release — louder, heavier, and more honest than ever before.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-3 sm:mt-16 sm:grid-cols-3 sm:gap-4">
+        <div class="aspect-square overflow-hidden">
+          <img src="https://picsum.photos/seed/gather-band/800" alt="" class="h-full w-full object-cover" />
+        </div>
+        <div class="aspect-square overflow-hidden">
+          <img src="https://picsum.photos/seed/gather-flora/800" alt="" class="h-full w-full object-cover" />
+        </div>
+        <div class="aspect-square overflow-hidden">
+          <img src="https://picsum.photos/seed/gather-stage/800" alt="" class="h-full w-full object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRACKS ===================== -->
+    <section
+      class="relative overflow-hidden bg-[radial-gradient(circle_at_25%_15%,#f3cf8e_0%,#dd9a4a_30%,#bb6a30_58%,#5e2c12_100%)] px-6 py-16 sm:px-10 sm:py-20 md:px-16">
+      <h2
+        class="absolute left-6 top-8 max-w-xs text-[clamp(2.25rem,6vw,4.25rem)] font-light leading-[1.1] text-white sm:left-10 sm:top-12 md:left-16">
+        Loud .<br />Lyrical.<br />Alive
+      </h2>
+
+      <div id="carousel"
+        class="relative mx-auto mt-48 h-[clamp(300px,32vw,480px)] touch-pan-y [perspective:1000px] sm:mt-0">
+        <div
+          class="pointer-events-none absolute bottom-2 left-1/2 z-0 h-10 w-[clamp(180px,18vw,280px)] -translate-x-1/2 rounded-full bg-black/50 blur-xl">
+        </div>
+        <!-- track cards injected by script.js -->
+      </div>
+
+      <!-- Player bar -->
+      <div
+        class="relative z-30 mx-auto mt-10 flex max-w-3xl flex-wrap items-center gap-4 rounded-full border border-white/10 bg-white/[0.08] px-5 py-3 backdrop-blur-2xl sm:mt-14 sm:gap-7 sm:px-7">
+        <div class="flex items-center gap-5 text-white/70 sm:gap-7">
+          <button id="prev-btn" aria-label="Previous track" class="transition-colors hover:text-white">
+            <i data-lucide="skip-back" class="h-5 w-5 fill-current sm:h-6 sm:w-6"></i>
+          </button>
+          <button id="play-btn" aria-label="Pause" class="text-white/85 transition-colors hover:text-white">
+            <i data-lucide="pause" class="h-6 w-6 fill-current sm:h-7 sm:w-7"></i>
+          </button>
+          <button id="next-btn" aria-label="Next track" class="transition-colors hover:text-white">
+            <i data-lucide="skip-forward" class="h-5 w-5 fill-current sm:h-6 sm:w-6"></i>
+          </button>
+        </div>
+
+        <div
+          class="flex min-w-0 flex-1 items-center justify-between gap-3 rounded-full border border-white/5 bg-black/45 p-1.5 sm:max-w-xs">
+          <div class="flex min-w-0 items-center gap-2.5 overflow-hidden">
+            <img id="now-image" src="" alt="" class="h-9 w-9 shrink-0 rounded-full object-cover" />
+            <div class="min-w-0">
+              <p id="now-title" class="truncate text-xs font-medium text-white sm:text-sm"></p>
+              <p id="now-artist" class="truncate text-[0.65rem] text-white/40 sm:text-xs"></p>
+            </div>
+          </div>
+          <div id="wave" class="mr-2.5 flex shrink-0 items-end gap-[2.5px]">
+            <!-- wave bars injected by script.js -->
+          </div>
+        </div>
+
+        <div class="hidden items-center gap-5 text-white/70 sm:flex">
+          <i data-lucide="cast" class="h-5 w-5"></i>
+          <i data-lucide="sliders-horizontal" class="h-5 w-5"></i>
+          <i data-lucide="volume-2" class="h-5 w-5"></i>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

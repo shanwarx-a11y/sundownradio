@@ -1,0 +1,55 @@
+/* Local script font (used by hero "Same energy.") */
+@font-face {
+  font-family: "Sloop Script";
+  src: url("./fonts/Sloop%20Script%20Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hero "Same energy." utility — Tailwind Play CDN can't see this class,
+   so map font-script here. */
+.font-script {
+  font-family: "Sloop Script", cursive;
+}
+
+/* ===================== HERO ORBIT GALLERY ===================== */
+@keyframes orbit-track {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.arch-track {
+  --radius: clamp(250px, max(45vh, 32vw), 800px);
+  animation: orbit-track 70s linear infinite;
+}
+
+.arch-item {
+  --size: var(--desktop-size);
+  width: var(--size);
+  height: var(--size);
+  margin-left: calc(var(--size) * -0.5);
+  margin-top: calc(var(--size) * -0.5);
+}
+
+@media (max-width: 639px) {
+  .arch-item {
+    --size: var(--mobile-size);
+  }
+}
+
+/* ===================== PLAYER WAVE BARS ===================== */
+@keyframes wave {
+  0% {
+    transform: scaleY(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundown Radio Animation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #961C21;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .word {
+            font-size: 72px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            color: #ffffff;
+        }
+
+        .radi-text {
+            margin-right: 2px;
+        }
+
+        .o-div {
+            width: 42px;
+            height: 42px;
+            border: 7px solid var(--accent-color);
+            border-radius: 50px;
+            box-sizing: border-box;
+            position: relative;
+            margin-bottom: -4px;
+        }
+
+        .o-pulse {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 8px;
+            height: 28px;
+            background-color: #ffffff;
+            border-radius: 4px;
+            opacity: 0;
+            box-shadow: 0 0 12px 3px rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="animation-container">
+        <!-- "sundown" word -->
+        <div class="word" id="sundown">sundown</div>
+        
+        <!-- "radio" word with div 'o' -->
+        <div class="word" id="radio">
+            <div class="radi-text">radi</div>
+            <div id="o-div" class="o-div">
+                <div id="o-pulse" class="o-pulse"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const sundown = document.getElementById('sundown');
+            const radio = document.getElementById('radio');
+            const oDiv = document.getElementById('o-div');
+            const oPulse = document.getElementById('o-pulse');
+
+            // Measure widths
+            const ws = sundown.offsetWidth;
+            const wr = radio.offsetWidth;
+            const gap = 24;
+
+            // Image 1: Inline "sundown radio"
+            const totalWidth = ws + gap + wr;
+            const sStart = -totalWidth / 2 + ws / 2;
+            const rStart = totalWidth / 2 - wr / 2;
+
+            // Initial Setup (Image 1 state)
+            gsap.set(sundown, { x: sStart, y: 0, xPercent: -50, yPercent: -50 });
+            gsap.set(radio, { x: rStart, y: 0, xPercent: -50, yPercent: -50 });
+
+            // Image 2: Stacked "sundown" over "radio" (Left Aligned)
+            const maxW = Math.max(ws, wr);
+            const sEnd = -maxW / 2 + ws / 2;
+            const rEnd = -maxW / 2 + wr / 2;
+            const yOff = 44;
+
+            // Image 3: Stretched 'o' Pill
+            const stretchAmount = 240;
+
+            // Master Timeline (Plays automatically on load)
+            const tl = gsap.timeline({ delay: 1 });
+
+            // Transition from Image 1 to Image 2 (Stacking)
+            tl.to(sundown, { x: sEnd, y: -yOff, ease: "power3.inOut", duration: 1.2 }, 0)
+              .to(radio, { x: rEnd, y: yOff, ease: "power3.inOut", duration: 1.2 }, 0);
+
+            // Wait a moment so the user can see Image 2
+            tl.add("stacked", "+=0.5");
+
+            // Transition from Image 2 to Image 3 (Stretching the 'o')
+            tl.to(oDiv, { width: 42 + stretchAmount, ease: "power3.inOut", duration: 1.5 }, "stacked")
+              .to(radio, { x: rEnd + stretchAmount / 2, ease: "power3.inOut", duration: 1.5 }, "stacked")
+              .to(oDiv, { boxShadow: "0px 0px 15px 2px rgba(150, 28, 33, 0.8)", ease: "power2.inOut", duration: 1 }, "stacked+=0.5");
+
+            // Pulse Animation inside the stretched pill
+            tl.to(oPulse, { opacity: 1, x: 2, duration: 0.2, ease: "power1.out" }, "stacked+=1.3")
+              .to(oPulse, { x: 42 + stretchAmount - 24, duration: 1.2, ease: "power2.inOut" }, "<")
+              .to(oPulse, { opacity: 0, duration: 0.3, ease: "power1.in" }, "-=0.3");
+
+            // Loop the animation for demonstration
+            tl.repeat(-1).repeatDelay(2);
+        });
+    </script>
+</body>
+</html>
