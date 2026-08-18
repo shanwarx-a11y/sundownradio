@@ -25,19 +25,20 @@
         /* Ultra-Clean Glass Effect */
         .liquid-water-glass {
             background: rgba(255, 255, 255, 0.25);
-            box-shadow: 
-                0 15px 35px rgba(0,0,0,0.2),
-                inset 0 1px 1px rgba(255,255,255,0.5);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        
+
         /* Force White Logo on Dark Sections */
         body.force-white-logo #logo-dark {
             opacity: 1 !important;
         }
+
         body.force-white-logo #logo-light {
             opacity: 0 !important;
         }
@@ -46,18 +47,32 @@
         body.force-black-logo #logo-dark {
             opacity: 0 !important;
         }
+
         body.force-black-logo #logo-light {
             opacity: 1 !important;
         }
+
         /* Hero Background Animation */
         @keyframes fadeInHero {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
+
         @keyframes zoomInfinite {
-            0% { transform: scale(1.0); }
-            100% { transform: scale(1.1); }
+            0% {
+                transform: scale(1.0);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
         }
+
         .animate-zoom-fade {
             animation: fadeInHero 3s ease-out forwards, zoomInfinite 20s ease-in-out infinite alternate;
         }
@@ -70,7 +85,8 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            height: 70vh; /* Fixed height so rows can flex vertically */
+            height: 70vh;
+            /* Fixed height so rows can flex vertically */
             min-height: 500px;
             gap: 12px;
         }
@@ -82,8 +98,10 @@
             gap: 12px;
             transition: flex 1.2s cubic-bezier(0.25, 1, 0.25, 1);
         }
+
         .mosaic-row.row-expanded {
-            flex: 3; /* Massively expand the row */
+            flex: 3;
+            /* Massively expand the row */
         }
 
         .mosaic-panel {
@@ -98,17 +116,36 @@
             transition: flex 1.2s cubic-bezier(0.25, 1, 0.25, 1), transform 0.4s;
             cursor: pointer;
         }
-        
+
         .mosaic-panel.panel-expanded {
-            flex: 4; /* Massively expand the panel */
+            flex: 4;
+            /* Massively expand the panel */
         }
 
         @media (min-width: 640px) {
-            #mosaic-grid { height: 80vh; gap: 20px; }
-            .mosaic-row { gap: 20px; }
-            .mosaic-panel { border-radius: 2.5rem; }
-            .mosaic-row.row-expanded { flex: 3.5; } /* Massively expand the row */
-            .mosaic-panel.panel-expanded { flex: 5; } /* Massively expand the panel */
+            #mosaic-grid {
+                height: 80vh;
+                gap: 20px;
+            }
+
+            .mosaic-row {
+                gap: 20px;
+            }
+
+            .mosaic-panel {
+                border-radius: 2.5rem;
+            }
+
+            .mosaic-row.row-expanded {
+                flex: 3.5;
+            }
+
+            /* Massively expand the row */
+            .mosaic-panel.panel-expanded {
+                flex: 5;
+            }
+
+            /* Massively expand the panel */
         }
 
         /* The Focal Panel Logo Reveal */
@@ -117,7 +154,7 @@
             opacity: 0.2;
             transform: scale(0.8);
         }
-        
+
         .panel-expanded .mosaic-logo {
             opacity: 1;
             transform: scale(1);
@@ -130,7 +167,8 @@
             pointer-events: none;
         }
 
-        /* Dark mode is now handled purely via JS class swapping for reliability */    </style>
+        /* Dark mode is now handled purely via JS class swapping for reliability */
+    </style>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -152,8 +190,9 @@
 
 </head>
 
-<body class="loading bg-light dark:bg-dark text-dark dark:text-light font-primary overflow-x-hidden transition-colors duration-500">
-    
+<body
+    class="loading bg-light dark:bg-dark text-dark dark:text-light font-primary overflow-x-hidden transition-colors duration-500">
+
     <!-- SVG Filter for Logo Light Mode -->
     <svg width="0" height="0" class="absolute pointer-events-none" xmlns="http://www.w3.org/2000/svg">
         <filter id="white-to-black">
@@ -163,7 +202,7 @@
                -0.5 1 -0.5 0 0
                -0.5 -0.5 1 0 0
                 0  0  0 1 0
-            "/>
+            " />
         </filter>
     </svg>
 
@@ -171,104 +210,142 @@
     <div class="fixed top-5 left-5 sm:top-8 sm:left-10 z-[100]">
         <a href="#hero" class="block relative h-[35px] sm:h-[40px] w-[120px] sm:w-[140px]">
             <!-- Original Logo for Dark Mode -->
-            <img id="logo-dark" src="images/logo/sundown radio.png" alt="Sundown Radio" class="absolute inset-0 h-full w-full object-contain object-left opacity-0 dark:opacity-100 transition-opacity duration-200 ease-out">
+            <img id="logo-dark" src="images/logo/sundown radio.png" alt="Sundown Radio"
+                class="absolute inset-0 h-full w-full object-contain object-left opacity-0 dark:opacity-100 transition-opacity duration-200 ease-out">
             <!-- Filtered Logo for Light Mode -->
-            <img id="logo-light" src="images/logo/sundown radio.png" alt="Sundown Radio" style="filter: url(#white-to-black);" class="absolute inset-0 h-full w-full object-contain object-left opacity-100 dark:opacity-0 transition-opacity duration-200 ease-out">
+            <img id="logo-light" src="images/logo/sundown radio.png" alt="Sundown Radio"
+                style="filter: url(#white-to-black);"
+                class="absolute inset-0 h-full w-full object-contain object-left opacity-100 dark:opacity-0 transition-opacity duration-200 ease-out">
         </a>
     </div>
 
     <!-- Unified Vertical Navigation Sidebar -->
-    <nav class="liquid-water-glass fixed bottom-8 sm:bottom-auto left-1/2 -translate-x-1/2 sm:top-1/2 sm:left-auto sm:right-6 sm:-translate-y-1/2 sm:translate-x-0 z-[100] flex sm:flex-col items-center gap-4 px-6 py-2 sm:p-3 rounded-full transition-colors duration-500">
-        
+    <nav
+        class="liquid-water-glass fixed bottom-8 sm:bottom-auto left-1/2 -translate-x-1/2 sm:top-1/2 sm:left-auto sm:right-6 sm:-translate-y-1/2 sm:translate-x-0 z-[100] flex sm:flex-col items-center gap-4 px-6 py-2 sm:p-3 rounded-full transition-colors duration-500">
+
 
         <!-- Day/Night Toggle Switch (Horizontal on Mobile, Vertical on Desktop) -->
-        <button id="theme-toggle" class="relative flex flex-row sm:flex-col items-center w-[48px] h-[22px] sm:w-[28px] sm:h-[62px] rounded-full bg-white/50 dark:bg-black/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),0_2px_4px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_3px_6px_rgba(0,0,0,0.6),0_1px_2px_rgba(255,255,255,0.05)] transition-colors duration-500 focus:outline-none shrink-0 border border-black/5 dark:border-white/10 touch-none">
-            
+        <button id="theme-toggle"
+            class="relative flex flex-row sm:flex-col items-center w-[48px] h-[22px] sm:w-[28px] sm:h-[62px] rounded-full bg-white/50 dark:bg-black/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),0_2px_4px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_3px_6px_rgba(0,0,0,0.6),0_1px_2px_rgba(255,255,255,0.05)] transition-colors duration-500 focus:outline-none shrink-0 border border-black/5 dark:border-white/10 touch-none">
+
             <!-- Static Icons (Background) -->
-            <div class="absolute left-1.5 sm:left-auto sm:top-2 w-auto sm:w-full h-full sm:h-auto flex items-center sm:justify-center text-black/30 dark:text-white/30 text-[9px] sm:text-[10px] pointer-events-none"><i class="fa-solid fa-sun"></i></div>
-            <div class="absolute right-1.5 sm:right-auto sm:bottom-2 w-auto sm:w-full h-full sm:h-auto flex items-center sm:justify-center text-black/30 dark:text-white/30 text-[9px] sm:text-[10px] pointer-events-none"><i class="fa-solid fa-moon"></i></div>
+            <div
+                class="absolute left-1.5 sm:left-auto sm:top-2 w-auto sm:w-full h-full sm:h-auto flex items-center sm:justify-center text-black/30 dark:text-white/30 text-[9px] sm:text-[10px] pointer-events-none">
+                <i class="fa-solid fa-sun"></i></div>
+            <div
+                class="absolute right-1.5 sm:right-auto sm:bottom-2 w-auto sm:w-full h-full sm:h-auto flex items-center sm:justify-center text-black/30 dark:text-white/30 text-[9px] sm:text-[10px] pointer-events-none">
+                <i class="fa-solid fa-moon"></i></div>
 
             <!-- Sliding Glass Knob -->
-            <div class="absolute top-[-1px] left-[-1px] sm:left-auto sm:top-[-2px] w-[24px] h-[24px] sm:w-[32px] sm:h-[32px] rounded-full flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+            <div
+                class="absolute top-[-1px] left-[-1px] sm:left-auto sm:top-[-2px] w-[24px] h-[24px] sm:w-[32px] sm:h-[32px] rounded-full flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                         bg-gradient-to-b from-[#ffffff] to-[#e6e6e6] shadow-[0_4px_10px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,1)] border border-white
                         dark:translate-x-[26px] dark:translate-y-0 sm:dark:translate-x-0 sm:dark:translate-y-[34px] dark:bg-gradient-to-b dark:from-[#3b3b44] dark:to-[#16161a] dark:shadow-[0_4px_10px_rgba(0,0,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.2)] dark:border-[#44444e]/30 z-10">
-                
+
                 <!-- Glow Icons -->
-                <i class="fa-solid fa-sun absolute text-[#f9bc50] text-[9px] sm:text-[12px] drop-shadow-[0_0_8px_rgba(249,188,80,0.8)] opacity-100 dark:opacity-0 transition-opacity duration-500 pointer-events-none"></i>
-                <i class="fa-solid fa-moon absolute text-white text-[9px] sm:text-[12px] drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] opacity-0 dark:opacity-100 transition-opacity duration-500 pointer-events-none"></i>
+                <i
+                    class="fa-solid fa-sun absolute text-[#f9bc50] text-[9px] sm:text-[12px] drop-shadow-[0_0_8px_rgba(249,188,80,0.8)] opacity-100 dark:opacity-0 transition-opacity duration-500 pointer-events-none"></i>
+                <i
+                    class="fa-solid fa-moon absolute text-white text-[9px] sm:text-[12px] drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] opacity-0 dark:opacity-100 transition-opacity duration-500 pointer-events-none"></i>
             </div>
         </button>
 
         <!-- Divider -->
-        <div class="w-[1px] h-4 sm:w-6 sm:h-[1px] bg-black/10 dark:bg-white/10 shrink-0 transition-colors duration-500 mx-0.5 sm:mx-0 sm:my-1"></div>
+        <div
+            class="w-[1px] h-4 sm:w-6 sm:h-[1px] bg-black/10 dark:bg-white/10 shrink-0 transition-colors duration-500 mx-0.5 sm:mx-0 sm:my-1">
+        </div>
 
         <!-- Navigation Links -->
         <div class="group relative flex items-center justify-center">
-            <a href="#hero" class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
+            <a href="#hero"
+                class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
                 <i data-lucide="home" class="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] stroke-[1.5]"></i>
             </a>
             <!-- Desktop Tooltip -->
-            <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">Home</div>
+            <div
+                class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">
+                Home</div>
             <!-- Mobile Tooltip -->
-            <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">Home</div>
+            <div
+                class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">
+                Home</div>
         </div>
 
         <div class="group relative flex items-center justify-center">
-            <a href="#about" class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
+            <a href="#about"
+                class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
                 <i data-lucide="user" class="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] stroke-[1.5]"></i>
             </a>
-            <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">About</div>
-            <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">About</div>
+            <div
+                class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">
+                About</div>
+            <div
+                class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">
+                About</div>
         </div>
 
         <div class="group relative flex items-center justify-center">
-            <a href="#releases" class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
+            <a href="#releases"
+                class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
                 <i data-lucide="disc" class="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] stroke-[1.5]"></i>
             </a>
-            <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">Releases</div>
-            <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">Releases</div>
+            <div
+                class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">
+                Releases</div>
+            <div
+                class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">
+                Releases</div>
         </div>
 
         <div class="group relative flex items-center justify-center">
-            <a href="#contact" class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
+            <a href="#contact"
+                class="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white focus:outline-none">
                 <i data-lucide="mail" class="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] stroke-[1.5]"></i>
             </a>
-            <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">Contact</div>
-            <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">Contact</div>
+            <div
+                class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap hidden sm:block">
+                Contact</div>
+            <div
+                class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.1),inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(255,255,255,0.2)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(255,255,255,0.05)] border border-white/60 dark:border-white/20 backdrop-blur-[32px] backdrop-saturate-[200%] text-black dark:text-white/90 text-[10px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap sm:hidden">
+                Contact</div>
         </div>
     </nav>
 
     <div id="main-container">
 
         <!-- SECTION 1: HERO -->
-        <section id="hero" class="relative min-h-screen w-full overflow-hidden bg-[#f4ecdf] dark:bg-black text-black dark:text-[#f4ecdf] transition-colors duration-500">
-            
+        <section id="hero"
+            class="relative min-h-screen w-full overflow-hidden bg-[#f4ecdf] dark:bg-black text-black dark:text-[#f4ecdf] transition-colors duration-500">
+
             <!-- Background Image Container -->
             <div class="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden z-0">
-<<<<<<< HEAD
-                <img src="public/media_1786203720971.png" class="w-[220%] max-w-none h-auto md:w-full md:h-full md:object-cover animate-zoom-fade origin-center invert dark:invert-0 transition-[filter] duration-500" style="clip-path: inset(2px 0 2px 0);" alt="Logo">
-=======
-                <img src="file:///C:/Users/hp/.gemini/antigravity/brain/edad463a-6fb4-4cd6-8e7a-46dc409a109c/.user_uploaded/media_1786203720971.png" class="w-[220%] max-w-none h-auto md:w-full md:h-full md:object-cover animate-zoom-fade origin-center invert dark:invert-0 transition-[filter] duration-500" style="clip-path: inset(2px 0 2px 0);" alt="Logo">
->>>>>>> origin/main
+                <img src="public/media_1786203720971.png"
+                    class="w-[220%] max-w-none h-auto md:w-full md:h-full md:object-cover animate-zoom-fade origin-center invert dark:invert-0 transition-[filter] duration-500"
+                    style="clip-path: inset(2px 0 2px 0);" alt="Logo">
             </div>
 
             <div class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center">
-                <h1 class="text-[clamp(1.25rem,4vw,2.75rem)] font-light uppercase leading-none tracking-[0.15em] text-black dark:text-[#f4ecdf] transition-colors duration-500">
+                <h1
+                    class="text-[clamp(1.25rem,4vw,2.75rem)] font-light uppercase leading-none tracking-[0.15em] text-black dark:text-[#f4ecdf] transition-colors duration-500">
                     New Era
                 </h1>
-                <p class="-mt- font-script text-[clamp(2.5rem,9vw,6.5rem)] leading-none text-black dark:text-[#f4ecdf] sm:mt-3 transition-colors duration-500">
+                <p
+                    class="-mt- font-script text-[clamp(2.5rem,9vw,6.5rem)] leading-none text-black dark:text-[#f4ecdf] sm:mt-3 transition-colors duration-500">
                     Same energy.
                 </p>
-                <button class="relative z-20 mt-25 rounded-full bg-black dark:bg-[#f4ecdf] px-6 py-2 text-xs font-medium text-white dark:text-black transition-all hover:scale-105 sm:mt-5 sm:text-sm">
+                <button
+                    class="relative z-20 mt-25 rounded-full bg-black dark:bg-[#f4ecdf] px-6 py-2 text-xs font-medium text-white dark:text-black transition-all hover:scale-105 sm:mt-5 sm:text-sm">
                     Join Gather
                 </button>
             </div>
 
-            <div class="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-1/2 bg-gradient-to-t from-[#f4ecdf] dark:from-[#08070a] to-transparent sm:h-1/3 transition-colors duration-500">
+            <div
+                class="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-1/2 bg-gradient-to-t from-[#f4ecdf] dark:from-[#08070a] to-transparent sm:h-1/3 transition-colors duration-500">
             </div>
 
             <div class="absolute inset-x-0 bottom-20 z-10 px-4 text-center sm:bottom-24">
-                <p class="text-[0.65rem] uppercase tracking-[0.2em] text-black/80 dark:text-[#f4ecdf]/80 sm:text-sm md:text-base transition-colors duration-500">
+                <p
+                    class="text-[0.65rem] uppercase tracking-[0.2em] text-black/80 dark:text-[#f4ecdf]/80 sm:text-sm md:text-base transition-colors duration-500">
                     The new album is here — turn it up and feel the fire.
                 </p>
             </div>
@@ -285,10 +362,11 @@
         class="relative overflow-hidden bg-[#08070a] px-6 py-16 sm:px-10 sm:py-20 md:px-16 transition-colors duration-1000">
 
         <!-- Ambient blurred background from cover art -->
-        <div id="bg-image-container" class="absolute inset-0 z-0 opacity-100 blur-[100px] pointer-events-none overflow-hidden">
+        <div id="bg-image-container"
+            class="absolute inset-0 z-0 opacity-100 blur-[100px] pointer-events-none overflow-hidden">
             <!-- Images will be dynamically injected here for crossfading -->
         </div>
-        
+
         <!-- Dark overlay to ensure text readability -->
         <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/10 to-[#08070a]/70 pointer-events-none"></div>
 
@@ -343,178 +421,231 @@
     </section>
 
     <!-- SECTION 4: ARTIST INTRODUCTION (Reference Redesign) -->
-    <section id="about" class="relative min-h-screen w-full overflow-hidden bg-white dark:bg-[#08070a] text-black dark:text-[#f4ecdf] font-sans flex items-center justify-center py-20 px-6 sm:px-10 transition-colors duration-500">
-        
+    <section id="about"
+        class="relative min-h-screen w-full overflow-hidden bg-white dark:bg-[#08070a] text-black dark:text-[#f4ecdf] font-sans flex items-center justify-center py-20 px-6 sm:px-10 transition-colors duration-500">
+
         <!-- Giant Faded Background Text -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] overflow-hidden select-none">
-            <h1 class="text-[clamp(100px,25vw,400px)] font-black tracking-tighter leading-none whitespace-nowrap mix-blend-overlay text-black dark:text-white transition-colors duration-500">SHANWAR</h1>
+        <div
+            class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] overflow-hidden select-none">
+            <h1
+                class="text-[clamp(100px,25vw,400px)] font-black tracking-tighter leading-none whitespace-nowrap mix-blend-overlay text-black dark:text-white transition-colors duration-500">
+                SHANWAR</h1>
         </div>
 
         <!-- Top Metadata Grid (Desktop) -->
-        <div class="hidden xl:block absolute top-12 left-12 text-[10px] sm:text-xs opacity-70 leading-relaxed tracking-wide">
-            UI/UX<br/>Mobile App
+        <div
+            class="hidden xl:block absolute top-12 left-12 text-[10px] sm:text-xs opacity-70 leading-relaxed tracking-wide">
+            UI/UX<br />Mobile App
         </div>
-        <div class="hidden xl:block absolute top-12 left-1/3 text-[10px] sm:text-xs opacity-70 leading-relaxed tracking-wide text-center">
-            Category<br/>Music App
+        <div
+            class="hidden xl:block absolute top-12 left-1/3 text-[10px] sm:text-xs opacity-70 leading-relaxed tracking-wide text-center">
+            Category<br />Music App
         </div>
-        <div class="hidden xl:block absolute top-12 right-1/3 text-[10px] sm:text-xs opacity-70 leading-relaxed tracking-wide text-right">
-            Project Duration<br/>4 Weeks
+        <div
+            class="hidden xl:block absolute top-12 right-1/3 text-[10px] sm:text-xs opacity-70 leading-relaxed tracking-wide text-right">
+            Project Duration<br />4 Weeks
         </div>
-        <div class="hidden xl:block absolute top-12 right-12 text-lg sm:text-xl font-bold tracking-widest leading-none text-right">
-            SHANWAR<br/><span class="text-xs font-normal opacity-70 tracking-widest">MUSIC</span>
+        <div
+            class="hidden xl:block absolute top-12 right-12 text-lg sm:text-xl font-bold tracking-widest leading-none text-right">
+            SHANWAR<br /><span class="text-xs font-normal opacity-70 tracking-widest">MUSIC</span>
         </div>
 
         <!-- Left Typography -->
         <div class="absolute top-[10%] md:top-[15%] left-6 md:left-[10%] z-20 max-w-[90%] md:max-w-[450px]">
-            <h2 class="text-[clamp(35px,5vw,70px)] font-semibold leading-[1.05] tracking-tight text-black dark:text-white transition-colors duration-500">
-                The future of<br/>music listening<br/>experience
+            <h2
+                class="text-[clamp(35px,5vw,70px)] font-semibold leading-[1.05] tracking-tight text-black dark:text-white transition-colors duration-500">
+                The future of<br />music listening<br />experience
             </h2>
         </div>
 
         <!-- Right Typography -->
-        <div class="absolute top-[75%] md:top-[18%] right-6 md:right-[10%] z-20 max-w-[90%] md:max-w-[280px] text-right md:text-left">
-            <p class="text-[clamp(16px,2vw,22px)] leading-[1.3] text-black/90 dark:text-white/90 font-light transition-colors duration-500">
-                Redefines what a<br/>music app can be—<br/>transforming passive<br/>listening into an<br/>immersive, interactive<br/>experience.
+        <div
+            class="absolute top-[75%] md:top-[18%] right-6 md:right-[10%] z-20 max-w-[90%] md:max-w-[280px] text-right md:text-left">
+            <p
+                class="text-[clamp(16px,2vw,22px)] leading-[1.3] text-black/90 dark:text-white/90 font-light transition-colors duration-500">
+                Redefines what a<br />music app can be—<br />transforming passive<br />listening into an<br />immersive,
+                interactive<br />experience.
             </p>
         </div>
-        
+
         <!-- Subtle Side Metadata -->
         <div class="hidden xl:block absolute top-[45%] left-12 text-[10px] opacity-70 leading-relaxed tracking-wide">
-            Nebula<br/>Music App
+            Nebula<br />Music App
         </div>
         <div class="hidden xl:block absolute top-[50%] left-[25%] text-[10px] opacity-70 leading-relaxed tracking-wide">
-            Project Type:<br/>Experimental
+            Project Type:<br />Experimental
         </div>
-        <div class="hidden xl:block absolute top-[40%] right-12 text-[10px] opacity-70 leading-relaxed tracking-wide text-right">
-            Jun 17<br/>2025
+        <div
+            class="hidden xl:block absolute top-[40%] right-12 text-[10px] opacity-70 leading-relaxed tracking-wide text-right">
+            Jun 17<br />2025
         </div>
 
         <!-- Bottom Right Action Buttons & Metadata -->
         <div class="hidden xl:flex absolute bottom-[15%] right-12 flex-col items-end gap-10 z-20">
             <!-- Buttons Stack -->
             <div class="flex flex-col gap-4">
-                <button class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/20 backdrop-blur-md border border-black/10 dark:border-white/10 flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/30 transition-all duration-500 text-black dark:text-white">
+                <button
+                    class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/20 backdrop-blur-md border border-black/10 dark:border-white/10 flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/30 transition-all duration-500 text-black dark:text-white">
                     <i data-lucide="skip-back" class="w-5 h-5 fill-current"></i>
                 </button>
-                <button class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/20 backdrop-blur-md border border-black/10 dark:border-white/10 flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/30 transition-all duration-500 text-black dark:text-white">
+                <button
+                    class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/20 backdrop-blur-md border border-black/10 dark:border-white/10 flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/30 transition-all duration-500 text-black dark:text-white">
                     <i data-lucide="pause" class="w-5 h-5 fill-current"></i>
                 </button>
-                <button class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/20 backdrop-blur-md border border-black/10 dark:border-white/10 flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/30 transition-all duration-500 text-black dark:text-white">
+                <button
+                    class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/20 backdrop-blur-md border border-black/10 dark:border-white/10 flex items-center justify-center hover:bg-black/10 dark:hover:bg-white/30 transition-all duration-500 text-black dark:text-white">
                     <i data-lucide="skip-forward" class="w-5 h-5 fill-current"></i>
                 </button>
             </div>
         </div>
-        <div class="hidden xl:block absolute bottom-[10%] right-[20%] text-[10px] opacity-70 leading-relaxed tracking-wide">
-            Location:<br/>Kerala, India
+        <div
+            class="hidden xl:block absolute bottom-[10%] right-[20%] text-[10px] opacity-70 leading-relaxed tracking-wide">
+            Location:<br />Kerala, India
         </div>
-        <div class="hidden xl:block absolute bottom-[25%] right-[20%] text-[10px] opacity-70 leading-relaxed tracking-wide">
-            Research<br/>Wireframing<br/>Designing<br/>Prototyping
+        <div
+            class="hidden xl:block absolute bottom-[25%] right-[20%] text-[10px] opacity-70 leading-relaxed tracking-wide">
+            Research<br />Wireframing<br />Designing<br />Prototyping
         </div>
 
         <!-- The CSS Phone Mockup Centerpiece (Perfect iPhone 17 Pro Style) -->
-        <div class="relative z-30 w-[280px] sm:w-[320px] h-[580px] sm:h-[650px] rounded-[48px] sm:rounded-[56px] bg-[#d1d1d6] dark:bg-[#323236] p-[3px] shadow-[0_30px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_80px_rgba(0,0,0,0.7)] ring-1 ring-black/10 dark:ring-[#5a5a5e] shadow-[inset_0_0_4px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)] mt-20 md:mt-0 transform transition-all duration-700 hover:scale-105">
-            
+        <div
+            class="relative z-30 w-[280px] sm:w-[320px] h-[580px] sm:h-[650px] rounded-[48px] sm:rounded-[56px] bg-[#d1d1d6] dark:bg-[#323236] p-[3px] shadow-[0_30px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_80px_rgba(0,0,0,0.7)] ring-1 ring-black/10 dark:ring-[#5a5a5e] shadow-[inset_0_0_4px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)] mt-20 md:mt-0 transform transition-all duration-700 hover:scale-105">
+
             <!-- Black Glass Bezel -->
-            <div class="relative w-full h-full rounded-[45px] sm:rounded-[53px] bg-black p-[5px] sm:p-[6px] shadow-[inset_0_0_2px_rgba(255,255,255,0.15)]">
-                
+            <div
+                class="relative w-full h-full rounded-[45px] sm:rounded-[53px] bg-black p-[5px] sm:p-[6px] shadow-[inset_0_0_2px_rgba(255,255,255,0.15)]">
+
                 <!-- Phone Screen Content -->
                 <div class="relative w-full h-full rounded-[40px] sm:rounded-[47px] overflow-hidden bg-[#111]">
-                
-                <!-- Dynamic Island (iPhone 17 Pro) -->
-                <div class="absolute top-3 left-1/2 -translate-x-1/2 w-[95px] h-[28px] bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-md">
-                    <!-- Sensor/Camera -->
-                    <div class="flex items-center gap-2">
-                        <div class="w-2.5 h-2.5 rounded-full bg-[#111] shadow-[inset_0_0_2px_rgba(255,255,255,0.2)] flex items-center justify-center">
-                            <div class="w-1 h-1 rounded-full bg-blue-900/60 blur-[0.5px]"></div>
+
+                    <!-- Dynamic Island (iPhone 17 Pro) -->
+                    <div
+                        class="absolute top-3 left-1/2 -translate-x-1/2 w-[95px] h-[28px] bg-black rounded-full z-50 flex items-center justify-between px-2.5 shadow-md">
+                        <!-- Sensor/Camera -->
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-2.5 h-2.5 rounded-full bg-[#111] shadow-[inset_0_0_2px_rgba(255,255,255,0.2)] flex items-center justify-center">
+                                <div class="w-1 h-1 rounded-full bg-blue-900/60 blur-[0.5px]"></div>
+                            </div>
+                            <div
+                                class="w-2.5 h-2.5 rounded-full bg-[#111] shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]">
+                            </div>
                         </div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-[#111] shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]"></div>
+                        <!-- Indicator dot -->
+                        <div class="w-1 h-1 rounded-full bg-green-500 opacity-0 transition-opacity duration-300"></div>
                     </div>
-                    <!-- Indicator dot -->
-                    <div class="w-1 h-1 rounded-full bg-green-500 opacity-0 transition-opacity duration-300"></div>
-                </div>
 
-                <!-- Status Bar -->
-                <div class="absolute top-3.5 w-full px-7 flex justify-between items-center z-40 text-[11px] font-medium text-white tracking-wider">
-                    <span class="pl-1">9:41</span>
-                    <div class="flex items-center gap-1.5 opacity-90 pr-1">
-                        <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i>
-                        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
-                        <i data-lucide="battery" class="w-[18px] h-[18px]"></i>
-                    </div>
-                </div>
-
-                <!-- The Portrait Image -->
-                <img src="images/portrait.jpg" class="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[20s] hover:scale-125 ease-out" alt="Shanwar Portrait" />
-
-                <!-- Red/Dark Gradient Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-b from-[#e13a10]/40 via-transparent to-[#111111] z-10"></div>
-                
-                <!-- Screen Top Nav -->
-                <div class="absolute top-12 w-full px-5 flex justify-between items-center z-20 text-white">
-                    <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                    <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center"><i data-lucide="share" class="w-4 h-4"></i></button>
-                </div>
-
-                <!-- Side UI floating elements inside screen -->
-                <div class="absolute top-1/2 right-4 -translate-y-1/2 flex flex-col gap-3 z-20">
-                    <button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center"><i data-lucide="sliders-horizontal" class="w-3 h-3 text-white"></i></button>
-                    <button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center"><i data-lucide="layers" class="w-3 h-3 text-white"></i></button>
-                    <button class="w-8 h-8 rounded-full bg-[#f05c2a] flex items-center justify-center shadow-lg shadow-[#f05c2a]/40"><i data-lucide="vinyl" class="w-4 h-4 text-white"></i></button>
-                </div>
-
-                <!-- Music Player UI (Bottom) -->
-                <div class="absolute bottom-6 w-full px-6 z-20">
-                    <h3 class="text-xl font-bold text-white mb-0 tracking-tight">Shanwar</h3>
-                    <p class="text-xs text-white/60 mb-5 tracking-wide">The Weekend</p>
-
-                    <!-- Progress Bar -->
-                    <div class="w-full h-1 bg-white/20 rounded-full mb-2">
-                        <div class="w-1/3 h-full bg-white rounded-full relative">
-                            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-md"></div>
+                    <!-- Status Bar -->
+                    <div
+                        class="absolute top-3.5 w-full px-7 flex justify-between items-center z-40 text-[11px] font-medium text-white tracking-wider">
+                        <span class="pl-1">9:41</span>
+                        <div class="flex items-center gap-1.5 opacity-90 pr-1">
+                            <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i>
+                            <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+                            <i data-lucide="battery" class="w-[18px] h-[18px]"></i>
                         </div>
                     </div>
-                    <div class="flex justify-between text-[8px] text-white/50 font-medium mb-6">
-                        <span>1:24</span>
-                        <span>-2:18</span>
+
+                    <!-- The Portrait Image -->
+                    <img src="images/portrait.jpg"
+                        class="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[20s] hover:scale-125 ease-out"
+                        alt="Shanwar Portrait" />
+
+                    <!-- Red/Dark Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#e13a10]/40 via-transparent to-[#111111] z-10">
                     </div>
 
-                    <!-- Controls -->
-                    <div class="flex justify-between items-center px-2">
-                        <button class="text-white/70 hover:text-white transition"><i data-lucide="shuffle" class="w-4 h-4"></i></button>
-                        <div class="flex items-center gap-6">
-                            <button class="text-white hover:text-white/80 transition"><i data-lucide="skip-back" class="w-6 h-6 fill-current"></i></button>
-                            <button class="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 transition shadow-[0_4px_15px_rgba(255,255,255,0.2)]"><i data-lucide="play" class="w-6 h-6 fill-current ml-1"></i></button>
-                            <button class="text-white hover:text-white/80 transition"><i data-lucide="skip-forward" class="w-6 h-6 fill-current"></i></button>
-                        </div>
-                        <button class="text-white/70 hover:text-white transition"><i data-lucide="repeat" class="w-4 h-4"></i></button>
+                    <!-- Screen Top Nav -->
+                    <div class="absolute top-12 w-full px-5 flex justify-between items-center z-20 text-white">
+                        <button
+                            class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center"><i
+                                data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button
+                            class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center"><i
+                                data-lucide="share" class="w-4 h-4"></i></button>
                     </div>
-                </div>
-            </div> <!-- End Phone Screen Content -->
+
+                    <!-- Side UI floating elements inside screen -->
+                    <div class="absolute top-1/2 right-4 -translate-y-1/2 flex flex-col gap-3 z-20">
+                        <button
+                            class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center"><i
+                                data-lucide="sliders-horizontal" class="w-3 h-3 text-white"></i></button>
+                        <button
+                            class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center"><i
+                                data-lucide="layers" class="w-3 h-3 text-white"></i></button>
+                        <button
+                            class="w-8 h-8 rounded-full bg-[#f05c2a] flex items-center justify-center shadow-lg shadow-[#f05c2a]/40"><i
+                                data-lucide="vinyl" class="w-4 h-4 text-white"></i></button>
+                    </div>
+
+                    <!-- Music Player UI (Bottom) -->
+                    <div class="absolute bottom-6 w-full px-6 z-20">
+                        <h3 class="text-xl font-bold text-white mb-0 tracking-tight">Shanwar</h3>
+                        <p class="text-xs text-white/60 mb-5 tracking-wide">The Weekend</p>
+
+                        <!-- Progress Bar -->
+                        <div class="w-full h-1 bg-white/20 rounded-full mb-2">
+                            <div class="w-1/3 h-full bg-white rounded-full relative">
+                                <div
+                                    class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-md">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-[8px] text-white/50 font-medium mb-6">
+                            <span>1:24</span>
+                            <span>-2:18</span>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex justify-between items-center px-2">
+                            <button class="text-white/70 hover:text-white transition"><i data-lucide="shuffle"
+                                    class="w-4 h-4"></i></button>
+                            <div class="flex items-center gap-6">
+                                <button class="text-white hover:text-white/80 transition"><i data-lucide="skip-back"
+                                        class="w-6 h-6 fill-current"></i></button>
+                                <button
+                                    class="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 transition shadow-[0_4px_15px_rgba(255,255,255,0.2)]"><i
+                                        data-lucide="play" class="w-6 h-6 fill-current ml-1"></i></button>
+                                <button class="text-white hover:text-white/80 transition"><i data-lucide="skip-forward"
+                                        class="w-6 h-6 fill-current"></i></button>
+                            </div>
+                            <button class="text-white/70 hover:text-white transition"><i data-lucide="repeat"
+                                    class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div> <!-- End Phone Screen Content -->
             </div> <!-- End Black Glass Bezel -->
         </div>
 
     </section>
 
     <!-- SECTION 4: SPONSORS & VENDORS (Animated Mosaic) -->
-    <section id="sponsors" class="relative w-full min-h-screen bg-[#f7f7f7] dark:bg-[#050505] overflow-hidden py-24 px-4 sm:px-8 z-10 transition-colors duration-1000">
-        
+    <section id="sponsors"
+        class="relative w-full min-h-screen bg-[#f7f7f7] dark:bg-[#050505] overflow-hidden py-24 px-4 sm:px-8 z-10 transition-colors duration-1000">
+
         <!-- Header -->
-        <div class="relative z-20 flex flex-col items-center text-center mb-12 sm:mb-20 transition-colors duration-1000">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black font-sans tracking-tight text-black dark:text-white uppercase mb-2 transition-colors duration-1000">
+        <div
+            class="relative z-20 flex flex-col items-center text-center mb-12 sm:mb-20 transition-colors duration-1000">
+            <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-black font-sans tracking-tight text-black dark:text-white uppercase mb-2 transition-colors duration-1000">
                 Sponsors & Vendors
             </h2>
-            <p class="section-subtitle text-sm sm:text-base text-black/50 dark:text-white/50 uppercase tracking-[0.2em] font-medium transition-colors duration-1000">
+            <p
+                class="section-subtitle text-sm sm:text-base text-black/50 dark:text-white/50 uppercase tracking-[0.2em] font-medium transition-colors duration-1000">
                 Our Partners
             </p>
         </div>
 
         <!-- Mosaic Container (Scroll Reveal) -->
-        <div id="mosaic-wrapper" class="relative w-full max-w-[1600px] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)]">
-            
+        <div id="mosaic-wrapper"
+            class="relative w-full max-w-[1600px] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)]">
+
             <!-- Opening Full Screen Panel -->
-            <div id="mosaic-opening" class="absolute inset-0 bg-black rounded-[3rem] sm:rounded-[4rem] z-30 flex flex-col items-center justify-center transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)]">
-                <div class="w-20 h-20 sm:w-32 sm:h-32 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-6">
-                     <i data-lucide="zap" class="w-10 h-10 sm:w-16 sm:h-16 text-white"></i>
+            <div id="mosaic-opening"
+                class="absolute inset-0 bg-black rounded-[3rem] sm:rounded-[4rem] z-30 flex flex-col items-center justify-center transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)]">
+                <div
+                    class="w-20 h-20 sm:w-32 sm:h-32 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-6">
+                    <i data-lucide="zap" class="w-10 h-10 sm:w-16 sm:h-16 text-white"></i>
                 </div>
                 <h3 class="text-4xl sm:text-7xl font-bold text-white tracking-wider">NOVA</h3>
             </div>
@@ -523,23 +654,23 @@
             <div id="mosaic-grid" class="opacity-0 transition-opacity duration-1000">
                 <!-- Panels injected via JS -->
             </div>
-            
+
         </div>
 
     </section>
 
     <!-- SECTION 5: GRAINIENT FOOTER -->
-    <section id="grainient-footer" class="relative w-full min-h-screen bg-black overflow-hidden flex flex-col justify-between items-center pt-10 pb-20 px-6 z-0">
-        
+    <section id="grainient-footer"
+        class="relative w-full min-h-screen bg-black overflow-hidden flex flex-col justify-between items-center pt-10 pb-20 px-6 z-0">
+
         <!-- Generated 8K Background Image -->
-<<<<<<< HEAD
-        <img src="public/grainient_orange_background_1786087943191.jpg" class="absolute inset-0 w-full h-full object-cover z-[-20] opacity-100" alt="Gradient Background">
-=======
-        <img src="file:///C:/Users/hp/.gemini/antigravity/brain/edad463a-6fb4-4cd6-8e7a-46dc409a109c/grainient_orange_background_1786087943191.jpg" class="absolute inset-0 w-full h-full object-cover z-[-20] opacity-100" alt="Gradient Background">
->>>>>>> origin/main
-        
+        <img src="public/grainient_orange_background_1786087943191.jpg"
+            class="absolute inset-0 w-full h-full object-cover z-[-20] opacity-100" alt="Gradient Background">
+
         <!-- Base Dark Gradient overlay for bottom fading -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-[-15] pointer-events-none"></div>
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-[-15] pointer-events-none">
+        </div>
 
         <!-- Top Content -->
         <div class="text-white/80 text-[10px] font-medium tracking-[0.2em] mt-4 uppercase z-10">
@@ -551,15 +682,18 @@
             <p class="text-[9px] sm:text-[10px] tracking-[0.25em] text-white/70 mb-4 font-semibold uppercase">
                 Company Founder Shanwar
             </p>
-            <h2 class="text-3xl sm:text-5xl md:text-[64px] font-semibold tracking-tight mb-8 drop-shadow-xl lowercase font-primary">
+            <h2
+                class="text-3xl sm:text-5xl md:text-[64px] font-semibold tracking-tight mb-8 drop-shadow-xl lowercase font-primary">
                 sundown radio
             </h2>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-[9px] sm:text-[10px] leading-[1.8] text-white/80 max-w-2xl mx-auto uppercase tracking-[0.1em] drop-shadow-lg">
+            <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-[9px] sm:text-[10px] leading-[1.8] text-white/80 max-w-2xl mx-auto uppercase tracking-[0.1em] drop-shadow-lg">
                 <a href="tel:+918547735024" class="hover:text-white transition-colors duration-300">
                     <span class="text-white/50 mr-1">Phone:</span> +91 8547735024
                 </a>
                 <a href="mailto:sundownradiomail@gmail.com" class="hover:text-white transition-colors duration-300">
-                    <span class="text-white/50 mr-1">Mail:</span> <span class="lowercase">sundownradiomail@gmail.com</span>
+                    <span class="text-white/50 mr-1">Mail:</span> <span
+                        class="lowercase">sundownradiomail@gmail.com</span>
                 </a>
             </div>
         </div>
